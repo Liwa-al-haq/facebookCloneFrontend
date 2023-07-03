@@ -15,7 +15,7 @@ export default NextAuth({
         clientId: process.env.FACEBOOK_ID,
         clientSecret: process.env.FACEBOOK_SECRET,
         // callbackUrl: 'http://localhost:3000/api/auth/callback/facebook',
-        // redirect: true,
+        redirect: true,
         }),
   ]
 })
