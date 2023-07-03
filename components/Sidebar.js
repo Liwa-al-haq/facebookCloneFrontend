@@ -9,7 +9,7 @@ import { signOut, useSession } from 'next-auth/react'
 
 const Sidebar = () => {
 
-  const {data:session} = useSession();
+  const { data : session } = useSession();
 
   return (
     <div className='hidden lg:inline-flex flex-col py-2 pl-2 max-w-xl lg:min-w-[320]px'>
