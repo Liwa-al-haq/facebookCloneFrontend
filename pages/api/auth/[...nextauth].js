@@ -7,7 +7,15 @@ export default NextAuth({
     // OAuth authentication providers...
     GoogleProvider({
         clientId: process.env.GOOGLE_ID,
-        clientSecret: process.env.GOOGLE_SECRET
+        clientSecret: process.env.GOOGLE_SECRET,
+        // callbackUrl: 'http://localhost:3000/api/auth/callback/google',
+        //  redirect: false,
       }),
+    FacebookProvider({
+        clientId: process.env.FACEBOOK_ID,
+        clientSecret: process.env.FACEBOOK_SECRET,
+        // callbackUrl: 'http://localhost:3000/api/auth/callback/facebook',
+        // redirect: true,
+        }),
   ]
 })
