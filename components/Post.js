@@ -4,25 +4,25 @@ import { FiThumbsUp } from "react-icons/fi";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { RiShareForwardLine } from "react-icons/ri";
 
-const Post = () => {
+const Post = ({ post }) => {
   return (
-    <div className='flex flex-col'>
-        <div className='bg-white mt-6 rounded-md p-4'>
-            <div className='flex items-center space-x-2'>
-                <img className='rounded-full h-12 w-12' src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Fabrizio_Romano_2021_%28cropped%29.jpg/330px-Fabrizio_Romano_2021_%28cropped%29.jpg' alt='' />
-                <div className='flex flex-col ml-2'>
-                    <p className='font-medium'>Fabrizio Romano</p>
-                    {/* <p className='text-xs text-gray-500'>{new Date().toLocaleString()}</p> */}
-                </div>
-            </div>
-            <p>Firmino to Al Ahli, HERE WE GO!!! @AlAhli</p>
+    <div className="flex flex-col" key={post.id}>
+      <div className="bg-white mt-6 rounded-md p-4">
+        <div className="flex items-center space-x-2">
+          <img src={post.profilePic} className="rounded-full w-10 h-10" />
+          <div>
+            <p className="font-medium">{post.name}</p>
+            <p className="text-xs text-gray-500">{post.timestamp}</p>
+          </div>
         </div>
-        {/* If any Image */}
-        <div className='relative h-60 md:h-96 bg-white'>
-            <Image src='https://external-preview.redd.it/fabrizio-romano-understand-roberto-firmino-has-now-reached-v0-n0NpEuEo5IPiCzFMCfdv8KNOGmhxqnKUvjFYAj76DSE.jpg?auto=webp&s=1d4c6e2b22720e81ecaf7971203dfdeee76eb6a1' objectFit="cover" layout="fill"/>
-            
+        <p className="py-4">{post.post}</p>
+      </div>
+      {post.image != null && (
+        <div className="relative h-60 md:h-96 bg-white">
+          <Image src={post.image} objectFit="cover" layout="fill"></Image>
         </div>
-         {/* Footer */}
+      )}
+      {/* Footer */}
       <div className="flex items-center justify-center bg-white p-2">
         <div className="flex items-center space-x-1 hover:bg-gray-100 flex-grow justify-center p-2 rounded-xl cursor-pointer">
           <FiThumbsUp className="h-4"></FiThumbsUp>
@@ -38,7 +38,7 @@ const Post = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;
