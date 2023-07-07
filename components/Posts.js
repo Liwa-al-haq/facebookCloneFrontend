@@ -9,18 +9,18 @@ const Posts = () => {
   const dispatch = useDispatch();
   const posts = useSelector(selectPost);
   
-  // useEffect(() => {
-  //   const fetchData = () => {
-  //     const response = axios
-  //       .get("http://localhost:8080/api/v1/post")
-  //       .then((response) => {
-  //         console.log(response.data);
-  //         dispatch(addAllPost(response.data));
-  //       });
-  //   };
-  //   fetchData();
-  //   console.log(posts);
-  // }, []);
+  useEffect(() => {
+    const fetchData = () => {
+      const response = axios
+        .get("http://localhost:8080/api/v1/post")
+        .then((response) => {
+          console.log(response.data);
+          dispatch(addAllPost(response.data));
+        });
+    };
+    fetchData();
+    console.log(posts);
+  }, []);
 
 
   return (
