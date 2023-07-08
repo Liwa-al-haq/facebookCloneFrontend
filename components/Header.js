@@ -6,9 +6,11 @@ import { MdOutlineExpandMore, MdOutlineOndemandVideo } from "react-icons/md";
 import { RiFlag2Line } from "react-icons/ri";
 import { IoGameControllerOutline } from "react-icons/io5";
 import { useSession, signOut } from "next-auth/react";
+import Button from "./Button";
 
 const Header = () => {
   const { data: session, status } = useSession();
+
   return (
     <div className="sticky z-50 flex h-16 bg-white items-center p-2 shadow-md top-0">
       {/* Left */}
@@ -83,6 +85,7 @@ const Header = () => {
           size={20}
           className=" hidden lg:inline-flex h-10 w-10 bg-gray-200 text-gray-600 rounded-full p-2 cursor-pointer hover:bg-gray-300"
         />
+        <Button />
       </div>
     </div>
   );
