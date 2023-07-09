@@ -7,7 +7,7 @@ import { RiShareForwardLine } from "react-icons/ri";
 const Post = ({ post }) => {
   return (
     <div className="flex flex-col" key={post.id}>
-      <div className="bg-white mt-6 rounded-md p-4">
+      <div className=" mt-6 rounded-md p-4 border">
         <div className="flex items-center space-x-2">
           <img src={post.profilePic} className="rounded-full w-10 h-10" />
           <div>
@@ -18,12 +18,12 @@ const Post = ({ post }) => {
         <p className="py-4">{post.post}</p>
       </div>
       {post.image != null && (
-        <div className="relative h-60 md:h-96 bg-white">
+        <div className="relative h-60 md:h-96 border ">
           <Image src={post.image} objectFit="cover" layout="fill"/>
         </div>
       )}
       {/* Footer */}
-      <div className="flex items-center justify-center bg-white p-2">
+      <div className="flex items-center justify-center p-2">
         <div className="flex items-center space-x-1 hover:bg-gray-100 flex-grow justify-center p-2 rounded-xl cursor-pointer">
           <FiThumbsUp className="h-4"></FiThumbsUp>
           <p className="text-xs sm:text-base">Like</p>

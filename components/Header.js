@@ -7,12 +7,34 @@ import { RiFlag2Line } from "react-icons/ri";
 import { IoGameControllerOutline } from "react-icons/io5";
 import { useSession, signOut } from "next-auth/react";
 import Button from "./Button";
-
+import { HiOutlineSun, HiOutlineMoon } from "react-icons/hi";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 const Header = () => {
   const { data: session, status } = useSession();
+  const { systemTheme, theme, setTheme } = useTheme();
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const renderTheme = () => {
+    if (!mounted) return null;
+    const currentTheme= theme === 'system' ? systemTheme : theme;
+    if(currentTheme === 'dark') {
+        return (
+            <HiOutlineSun onClick={() => setTheme('light')} role="button" className="w-7 h-7"/>
+        );
+      }
+      else {
+        return (
+            <HiOutlineMoon onClick={() => setTheme('dark')} role="button" className="w-7 h-7"/>
+        );
+      }
+  }
+
 
   return (
-    <div className="sticky z-50 flex h-16 bg-white items-center p-2 shadow-md top-0">
+    <div className="sticky z-50 flex h-16 border-b items-center p-2 shadow-md top-0">
       {/* Left */}
       <div className="flex min-w-fit">
         <Image
@@ -20,7 +42,7 @@ const Header = () => {
           height={40}
           width={40}
         />
-        <div className="flex items-center space-x-2 px-2 ml-2 rounded-full bg-gray-100 text-gray-500">
+        <div className="flex items-center space-x-2 px-2 ml-2 rounded-full ">
           <HiOutlineSearch size={20} />
           <input
             className="hidden lg:inline-flex bg-transparent focus:outline-none outline-none flex-shrink"
@@ -71,21 +93,21 @@ const Header = () => {
         </p>
         <CgMenuGridO
           size={20}
-          className=" hidden lg:inline-flex h-10 w-10 bg-gray-200 text-gray-600 rounded-full p-2 cursor-pointer hover:bg-gray-300"
+          className=" hidden lg:inline-flex h-10 w-10  rounded-full p-2 cursor-pointer hover:bg-gray-600"
         />
         <AiFillMessage
           size={20}
-          className=" hidden lg:inline-flex h-10 w-10 bg-gray-200 text-gray-600 rounded-full p-2 cursor-pointer hover:bg-gray-300"
+          className=" hidden lg:inline-flex h-10 w-10  rounded-full p-2 cursor-pointer hover:bg-gray-600"
         />
         <AiFillBell
           size={20}
-          className=" hidden lg:inline-flex h-10 w-10 bg-gray-200 text-gray-600 rounded-full p-2 cursor-pointer hover:bg-gray-300"
+          className=" hidden lg:inline-flex h-10 w-10  rounded-full p-2 cursor-pointer hover:bg-gray-600"
         />
         <MdOutlineExpandMore
           size={20}
-          className=" hidden lg:inline-flex h-10 w-10 bg-gray-200 text-gray-600 rounded-full p-2 cursor-pointer hover:bg-gray-300"
+          className=" hidden lg:inline-flex h-10 w-10  rounded-full p-2 cursor-pointer hover:bg-gray-600"
         />
-        <Button />
+        {renderTheme()}
       </div>
     </div>
   );

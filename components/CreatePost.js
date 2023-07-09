@@ -63,7 +63,7 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="bg-white rounded-md shadow-md text-gray-500 p-2 divide-y">
+    <div className="border rounded-md shadow-md text-gray-500 p-2 divide-y">
       <div className="flex p-4 space-x-2 items-center">
         <Image
           src={session?.user.image}
@@ -73,7 +73,7 @@ const CreatePost = () => {
         />
         <form className="flex flex-1">
           <input
-            className="rounded-full h-12 flex-grow focus:outline-none font-medium bg-gray-100 px-4"
+            className="rounded-full h-12 flex-grow focus:outline-none font-medium  px-4"
             type="text"
             ref={inputRef}
             placeholder={`What's on your mind, ${session?.user.name}?`}></input>

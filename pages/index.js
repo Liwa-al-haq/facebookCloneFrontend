@@ -15,7 +15,7 @@ export default function Home({ session }) {
       </Head>
       <Header />
 
-      <main className="flex bg-gray-100">
+      <main className="flex ">
         {/* Left Sidebar */}
         <Sidebar />
 
